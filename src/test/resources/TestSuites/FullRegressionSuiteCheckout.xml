@@ -1,0 +1,159 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Full Regression Suite" verbose="1">
+    <test name="Positive Checkout Test in Chrome">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="checkout_fillInWithValidCredentials_redirectToTheNextStep"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Positive Checkout Test in Edge">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="checkout_fillInWithValidCredentials_redirectToTheNextStep"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Positive Checkout Test in Firefox">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="checkout_fillInWithValidCredentials_redirectToTheNextStep"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Positive Checkout Test with invalid credentials in Chrome">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="checkout_fillInWithInvalidCredentials_redirectToTheNextStep"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Negative Checkout with empty first name field in Chrome">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="firstName" value=""/>
+        <parameter name="lastName" value="Test"/>
+        <parameter name="zipCode" value="152364"/>
+        <parameter name="expectedErrorMessage" value="Error: First Name is required"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="checkout_fillInWithoutAtLeastOneMandatoryField_errorMessageIsDisplayed"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Negative Checkout with empty last name field in Firefox">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="firstName" value="Alexandra"/>
+        <parameter name="lastName" value=""/>
+        <parameter name="zipCode" value="236411"/>
+        <parameter name="expectedErrorMessage" value="Error: Last Name is required"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="checkout_fillInWithoutAtLeastOneMandatoryField_errorMessageIsDisplayed"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Negative Checkout with all empty fields in Chrome">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="firstName" value=""/>
+        <parameter name="lastName" value=""/>
+        <parameter name="zipCode" value=""/>
+        <parameter name="expectedErrorMessage" value="Error: First Name is required"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="checkout_fillInWithoutAtLeastOneMandatoryField_errorMessageIsDisplayed"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Finish Checkout Test in Chrome">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="checkout_clickOnFinishCheckout_redirectToCheckoutComplete"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Finish Checkout Test in Firefox">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="checkout_clickOnFinishCheckout_redirectToCheckoutComplete"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Back To Products From Checkout Test in Edge">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="checkoutCompleted_clickOnReturnHome_redirectToProductsPage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Back To Products From Checkout Test in Firefox">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="checkoutCompleted_clickOnReturnHome_redirectToProductsPage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Cancel functionality from Checkout Form in Firefox">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="cancelCheckoutStepOneFunctionality"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Cancel functionality from Checkout Payment Information in Edge">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="com.tests.checkout.CheckoutTests">
+                <methods>
+                    <include name="checkout_clickOnCancelCheckoutStepTwo_redirectToProducts"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
